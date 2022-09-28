@@ -1,16 +1,15 @@
+import { Box } from './common/Box';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
+    <Box
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      alignItems="center"
+      bg="background"
     >
       React homework template
-    </div>
+    </Box>
   );
 };
