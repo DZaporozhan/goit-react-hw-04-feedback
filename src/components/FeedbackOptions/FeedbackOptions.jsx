@@ -1,15 +1,18 @@
 // import PropTypes from 'prop-types';
-import { Tittle, Button } from './FeedbackOptions.styled';
+import { Button } from './FeedbackOptions.styled';
 import { Box } from '../common/Box';
 
-export const FeedbackOptions = () => {
+export const FeedbackOptions = ({ option, onLeaveFeedback }) => {
   return (
     <>
-      <Tittle>Please leave feedback</Tittle>
       <Box display="flex" ml="40px">
-        <Button>Good</Button>
-        <Button>Neutral</Button>
-        <Button>Bad</Button>
+        {option.map(buttonName => {
+          return (
+            <Button key={buttonName} id={buttonName} onClick={onLeaveFeedback}>
+              {buttonName}
+            </Button>
+          );
+        })}
       </Box>
     </>
   );
