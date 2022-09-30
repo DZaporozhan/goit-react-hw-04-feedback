@@ -39,7 +39,6 @@ export class App extends Component {
     );
     const option = this.options();
     const isFeedback = !total;
-    console.log(isFeedback);
 
     return (
       <Box display="flex" flexDirection="column">
