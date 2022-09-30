@@ -9,7 +9,7 @@ export const FeedbackOptions = ({ option, onLeaveFeedback }) => {
         {option.map(buttonName => {
           return (
             <Button key={buttonName} id={buttonName} onClick={onLeaveFeedback}>
-              {buttonName}
+              {buttonName.toUpperCase()}
             </Button>
           );
         })}

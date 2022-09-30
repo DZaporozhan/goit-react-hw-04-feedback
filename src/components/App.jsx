@@ -3,6 +3,8 @@ import { Box } from './common/Box';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Section } from './Section/Section';
+import { Notification } from './Message/Notification';
+
 export class App extends Component {
   state = {
     good: 0,
@@ -12,21 +14,7 @@ export class App extends Component {
 
   onLeaveFeedback = e => {
     const id = e.target.id;
-    switch (id) {
-      case 'good':
-        this.setState(preState => ({ good: preState.good + 1 }));
-        break;
-
-      case 'neutral':
-        this.setState(preState => ({ neutral: preState.neutral + 1 }));
-        break;
-
-      case 'bad':
-        this.setState(preState => ({ bad: preState.bad + 1 }));
-        break;
-      default:
-        console.log('Invalid subscription type');
-    }
+    this.setState({ [id]: this.state[id] + 1 });
   };
 
   countTotalFeedback = ({ good, neutral, bad }) => {
@@ -50,6 +38,8 @@ export class App extends Component {
       total
     );
     const option = this.options();
+    const isFeedback = !total;
+    console.log(isFeedback);
 
     return (
       <Box display="flex" flexDirection="column">
@@ -60,13 +50,17 @@ export class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
-          />
+          {!isFeedback ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </Box>
     );
