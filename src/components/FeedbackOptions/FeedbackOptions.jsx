@@ -9,7 +9,11 @@ export const FeedbackOptions = ({ option, onLeaveFeedback }) => {
       <Box display="flex" ml="40px">
         {option.map(buttonName => {
           return (
-            <Button key={buttonName} id={buttonName} onClick={onLeaveFeedback}>
+            <Button
+              key={buttonName}
+              name={buttonName}
+              onClick={onLeaveFeedback}
+            >
               {buttonName.toUpperCase()}
             </Button>
           );
